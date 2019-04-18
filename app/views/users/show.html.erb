@@ -1,10 +1,23 @@
 <div class="float-right">
   <% if logged_in? %>
-  <%= link_to "(#{current_user.username}) " %>
+  <%= link_to "#{current_user.username} " %>
   <%= link_to "Log out", logout_path, method: "delete" %>
   <% else %>
     <%= link_to 'Sign up', signup_path %>
   <% end %>
 </div>
 
-<h1><%= @user.username %></h1>
+
+<h1>Events List</h1>
+
+<% @events.each do | event| %>
+<% if logged_in? %>
+  <p><%= event.title %></p>
+  <p><%=  event.info %></p>
+    <p><%=  event.location %></p>
+      <p><%=  event.date %></p>
+  <hr>
+   <% else %>
+     <p>Hidden</p>
+    <% end %>
+<% end %>
