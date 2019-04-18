@@ -7,17 +7,9 @@
   <% end %>
 </div>
 
+<%= link_to "Create new event", events_new_path %>
 
-<h1>Events List</h1>
+<p><%= current_user.username %></p>
 
-<% @events.each do | event| %>
-<% if logged_in? %>
-  <p><%= event.title %></p>
-  <p><%=  event.info %></p>
-    <p><%=  event.location %></p>
-      <p><%=  event.date %></p>
-  <hr>
-   <% else %>
-     <p>Hidden</p>
-    <% end %>
-<% end %>
+
+<%= link_to "See all events", events_path %>
