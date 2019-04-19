@@ -8,7 +8,7 @@ class UsersController < ApplicationController
   def show
     @user = User.find(params[:id])
     if logged_in?
-    @events = @user.events 
+      @events = @user.events
     else
       redirect_to login_path
     end
