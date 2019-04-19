@@ -1,5 +1,6 @@
 # frozen_string_literal: true
 
+# Sessions controller
 class SessionsController < ApplicationController
   def create
     @user = User.find_by(username: params[:session][:username])

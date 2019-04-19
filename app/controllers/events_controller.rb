@@ -1,3 +1,6 @@
+# frozen_string_literal: true
+
+# Events controller
 class EventsController < ApplicationController
   def new
     @event = Event.new
@@ -14,7 +17,7 @@ class EventsController < ApplicationController
   def create
     @event = Event.new(event_params)
     @event.creator_id = current_user.id
-    if (@event.save)
+    if @event.save
       redirect_to user_path(@event.creator_id)
     else
       render 'new'
