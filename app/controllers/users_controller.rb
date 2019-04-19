@@ -22,4 +22,20 @@ class UsersController < ApplicationController
       render 'new'
     end
   end
+
+  def past  
+    if logged_in?
+      @events = Event.where('date < ?',  DateTime.now)
+    else
+      redirect_to login_path
+    end
+  end
+
+  def future
+    if logged_in?
+      @events = Event.where('date > ?',  DateTime.now)
+    else
+      redirect_to login_path
+    end
+  end
 end

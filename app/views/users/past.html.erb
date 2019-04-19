@@ -1,0 +1,13 @@
+<h1>Past event </h1>
+
+<% @events.each do | event| %>
+<% if logged_in? %>
+  <p><%= link_to event.title, event_path(event.id) %></p>
+  <p><%=  event.info %></p>
+    <p><%=  event.location %></p>
+      <p><%=  event.date %></p>
+  <hr>
+   <% else %>
+     <p>Hidden</p>
+    <% end %>
+<% end %>
