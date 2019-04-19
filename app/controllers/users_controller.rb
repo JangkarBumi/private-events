@@ -23,9 +23,9 @@ class UsersController < ApplicationController
     end
   end
 
-  def past  
+  def past
     if logged_in?
-      @events = Event.where('date < ?',  DateTime.now)
+      @events = Event.past
     else
       redirect_to login_path
     end
@@ -33,7 +33,7 @@ class UsersController < ApplicationController
 
   def future
     if logged_in?
-      @events = Event.where('date > ?',  DateTime.now)
+      @events = Event.upcoming
     else
       redirect_to login_path
     end
