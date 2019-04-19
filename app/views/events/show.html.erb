@@ -9,14 +9,23 @@
 
 <%= link_to "Create new event", events_new_path %>
 
+
 <h1>Creator</h1>
 
 <p><%= current_user.username %></p>
-
-<h1>Attendances</h1>
-<% @attendees.each do | attendee| %>
-<% if logged_in? %>
-      <p><%=  attendee.user_id %></p>
   <hr>
+<% if logged_in? %>
+  <p><%= @event.title %></p>
+  <p><%=  @event.info %></p>
+    <p><%=  @event.location %></p>
+      <p><%=  @event.date %></p>
+  <hr>
+   <% else %>
+     <p>Hidden</p>
     <% end %>
+
+
+ <h2> Attending &nbsp;( <%= @attendees.count %> )</h2>
+<% @attendees.each do | attendee| %>
+      <p><%=  attendee.user.username %></p>
 <% end %>

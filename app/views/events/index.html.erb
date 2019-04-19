@@ -11,7 +11,7 @@
 
 <% @events.each do | event| %>
 <% if logged_in? %>
-  <p><%= event.title %></p>
+  <p><%= link_to event.title, event_path(event.id) %></p>
   <p><%=  event.info %></p>
     <p><%=  event.location %></p>
       <p><%=  event.date %></p>
