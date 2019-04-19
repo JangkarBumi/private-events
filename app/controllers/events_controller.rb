@@ -4,7 +4,11 @@ class EventsController < ApplicationController
   end
 
   def index
-    @events = Event.all
+    if logged_in?
+      @events = Event.all
+    else
+      redirect_to login_path
+    end
   end
 
   def create
@@ -19,8 +23,8 @@ class EventsController < ApplicationController
 
   def show
     if logged_in?
-    @event = Event.find(params[:id])
-    @attendees = @event.attendances
+      @event = Event.find(params[:id])
+      @attendees = @event.attendances
     else
       redirect_to login_path
     end
