@@ -1,1 +1,22 @@
-<h1>This is show page of the events</h1>
+<div class="float-right">
+  <% if logged_in? %>
+  <%= link_to "#{current_user.username} " %>
+  <%= link_to "Log out", logout_path, method: "delete" %>
+  <% else %>
+    <%= link_to 'Sign up', signup_path %>
+  <% end %>
+</div>
+
+<%= link_to "Create new event", events_new_path %>
+
+<h1>Creator</h1>
+
+<p><%= current_user.username %></p>
+
+<h1>Attendances</h1>
+<% @attendees.each do | attendee| %>
+<% if logged_in? %>
+      <p><%=  attendee.user_id %></p>
+  <hr>
+    <% end %>
+<% end %>

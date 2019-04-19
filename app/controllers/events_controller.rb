@@ -17,6 +17,15 @@ class EventsController < ApplicationController
     end
   end
 
+  def show
+    if logged_in?
+    @event = Event.find(params[:id])
+    @attendees = @event.attendances
+    else
+      redirect_to login_path
+    end
+  end
+
   def event_params
     params.require(:event).permit(:title, :info, :location, :date)
   end
