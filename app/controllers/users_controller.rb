@@ -2,17 +2,19 @@
 
 # Users controller
 class UsersController < ApplicationController
+  before_action :require_login
+
+  def require_login
+    redirect_to login_path unless logged_in?
+  end
+
   def new
     @user = User.new
   end
 
   def show
     @user = User.find(params[:id])
-    if logged_in?
-      @events = @user.events
-    else
-      redirect_to login_path
-    end
+    @events = @user.events
   end
 
   def create
@@ -25,18 +27,10 @@ class UsersController < ApplicationController
   end
 
   def past
-    if logged_in?
-      @events = Event.past
-    else
-      redirect_to login_path
-    end
+    @events = Event.where('date < ?',  DateTime.now)
   end
 
   def future
-    if logged_in?
-      @events = Event.upcoming
-    else
-      redirect_to login_path
-    end
+    @events = Event.where('date > ?',  DateTime.now)
   end
 end
