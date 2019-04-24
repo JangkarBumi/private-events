@@ -2,11 +2,7 @@
 
 # Users controller
 class UsersController < ApplicationController
-  before_action :require_login
-
-  def require_login
-    redirect_to login_path unless logged_in?
-  end
+  before_action :require_login, only: %i[show past future]
 
   def new
     @user = User.new

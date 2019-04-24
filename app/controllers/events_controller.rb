@@ -2,16 +2,14 @@
 
 # Events controller
 class EventsController < ApplicationController
+  before_action :require_login, only: %i[index show]
+
   def new
     @event = Event.new
   end
 
   def index
-    if logged_in?
-      @events = Event.all
-    else
-      redirect_to login_path
-    end
+    @events = Event.all
   end
 
   def create
@@ -25,12 +23,8 @@ class EventsController < ApplicationController
   end
 
   def show
-    if logged_in?
-      @event = Event.find(params[:id])
-      @attendees = @event.attendances
-    else
-      redirect_to login_path
-    end
+    @event = Event.find(params[:id])
+    @attendees = @event.attendances
   end
 
   def event_params
