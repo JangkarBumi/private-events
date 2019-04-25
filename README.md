@@ -1,24 +1,8 @@
-# README
+### Private Events
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+This is a simple application to familiarize with associations in rails.
+If you are logged in you can see a list of events created by users and a list attendees for each event.
 
-Things you may want to cover:
-
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+### Contributors:
+* [Valentino Valenti](https://github.com/1ba1)
+* [Zeha Irawan](https://github.com/JangkarBumi)
