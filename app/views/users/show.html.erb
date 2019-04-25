@@ -1,0 +1,17 @@
+<div class="float-right">
+  <% if logged_in? %>
+  <%= link_to "Dashboard", user_path(current_user.id) %>
+  <%= link_to "Log out", logout_path, method: "delete" %>
+  <% else %>
+    <%= link_to 'Sign up', signup_path %>
+  <% end %>
+</div>
+
+<%= link_to "Create new event", events_new_path %>
+
+<p><%= current_user.username %></p>
+
+
+<%= link_to "See all events", events_path %>
+<%= link_to "Past events", pastevent_path %>
+<%= link_to "Upcoming events", upcoming_path %>

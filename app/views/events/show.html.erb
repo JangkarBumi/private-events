@@ -1,0 +1,31 @@
+<div class="float-right">
+  <% if logged_in? %>
+  <%= link_to "Dashboard", user_path(current_user.id) %>
+  <%= link_to "Log out", logout_path, method: "delete" %>
+  <% else %>
+    <%= link_to 'Sign up', signup_path %>
+  <% end %>
+</div>
+
+<%= link_to "Create new event", events_new_path %>
+
+
+<h1>Creator</h1>
+
+<p><%= current_user.username %></p>
+  <hr>
+<% if logged_in? %>
+  <p><%= @event.title %></p>
+  <p><%=  @event.info %></p>
+    <p><%=  @event.location %></p>
+      <p><%=  @event.date %></p>
+  <hr>
+   <% else %>
+     <p>Hidden</p>
+    <% end %>
+
+
+ <h2> Attending &nbsp;( <%= @attendees.count %> )</h2>
+<% @attendees.each do | attendee| %>
+      <p><%=  attendee.user.username %></p>
+<% end %>
